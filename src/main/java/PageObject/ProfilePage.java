@@ -32,4 +32,7 @@ public class ProfilePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         wait.until(ExpectedConditions.visibilityOfElementLocated(profileField));
     }
+    public ProfilePage(WebDriver driver) {
+        this.driver = driver;
+    }
 }

@@ -2,6 +2,7 @@ package PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -47,5 +48,13 @@ public class LogInPage {
     //клик на кнопку "восстановить пароль"
     public  void  clickForgotPasswordButton() {
         driver.findElement(forgotPasswordButton).click();
+    }
+    //найти кнопку "войти"
+    public WebElement findEnterButton() {
+        return driver.findElement(logInButton);
+    }
+
+    public LogInPage(WebDriver driver) {
+        this.driver = driver;
     }
 }

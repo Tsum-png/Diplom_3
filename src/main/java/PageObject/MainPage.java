@@ -1,7 +1,6 @@
 package PageObject;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,9 +18,9 @@ public class MainPage {
     //локатор поля "булки"
     private final By breadField = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[1]");
     //локатор поля "соусы"
-    private final By sauceField = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[2]");
+    private final By sauceField = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[2]/span");
     //локатор поля "начинки"
-    private final By fillingField = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[3]");
+    private final By fillingField = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[3]/span");
     //локатор "флюорисцентная булка"
     private final By fluorescentBreadButton = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/ul[1]/a[1]/img");
     //локатор "соус Spicy-X"
@@ -52,21 +51,24 @@ public class MainPage {
     public void clickFillingField() {
         driver.findElement(fillingField).click();
     }
-    //клик по "флюорисцентная булка"
-    public void clickFluorescentBreadButton() {
-        driver.findElement(fluorescentBreadButton).click();
+    //найти "флюорисцентная булка"
+    public WebElement findFluorescentBread() {
+       return driver.findElement(fluorescentBreadButton);
     }
-    //клик по "соус Spicy-X"
-    public void clickSpicyXButton() {
-        driver.findElement(spicyXButton).click();
+    //найти "соус Spicy-X"
+    public WebElement findSpicyX() {
+       return driver.findElement(spicyXButton);
     }
-    //клик по "говяжий метеорит (отбивная)"
-    public void clickMeteoriteButton() {
-        driver.findElement(meteoriteButton).click();
+    //найти "говяжий метеорит (отбивная)"
+    public WebElement findMeteorite() {
+        return driver.findElement(meteoriteButton);
     }
     //ожидание загрузки главной страницы
     public void waitForConstructBurgerField() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(constructBurgerField));
+    }
+    public MainPage(WebDriver driver) {
+        this.driver = driver;
     }
 }

@@ -20,6 +20,15 @@ public class RegistrationPage {
     private final By newEmailField = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[2]/div/div");
     //локатор кнопки зарегистрироваться
     private final By registrationButton = By.xpath("//*[@id=\"root\"]/div/main/div/form/button");
+    //локатор кнопки "войти"
+    private final By logInRegistrationButton = By.xpath("//*[@id=\"root\"]/div/main/div/div/p/a");
+
+    //регистрация нового пользователя
+    public void registrationCorrectUser(String newName, String newPassword, String newEmail){
+        driver.findElement(newNameField).sendKeys(newName);
+        driver.findElement(newPasswordField).sendKeys(newPassword);
+        driver.findElement(newEmailField).sendKeys(newEmail);
+    }
 
     //заполнить поле имя
     public void enterInputNewName(String newName) {
@@ -37,9 +46,16 @@ public class RegistrationPage {
     public void clickRegistrationButton() {
         driver.findElement(registrationButton).click();
     }
+    //клик по кнопке войти
+    public void clickLogInRegistrationButton() {
+        driver.findElement(logInRegistrationButton).click();
+    }
     //ожидание загрузки страницы регистрации
     public void waitForLoadRegistrationField() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         wait.until(ExpectedConditions.visibilityOfElementLocated(registrationField));
+    }
+    public RegistrationPage(WebDriver driver) {
+        this.driver = driver;
     }
 }
