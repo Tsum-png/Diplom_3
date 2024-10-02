@@ -2,6 +2,7 @@ package PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,15 +14,17 @@ public class RegistrationPage {
     //локатор поля "регистрация"
     private final By registrationField = By.xpath("//*[@id=\"root\"]/div/main/div/h2");
     //локатор поля имя
-    private final By newNameField = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[1]/div/div");
+    private final By newNameField = By.xpath(".//label[text()='Имя']/parent::div/input[@class = 'text input__textfield text_type_main-default']");
     //локатор поля пароль
-    private final By newPasswordField = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[3]/div/div");
+    private final By newPasswordField = By.xpath(".//input[@class = 'text input__textfield text_type_main-default' and@type = 'password']");
     //локатор поля email
-    private final By newEmailField = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[2]/div/div");
+    private final By newEmailField = By.xpath(".//label[text()='Email']/parent::div/input[@class = 'text input__textfield text_type_main-default']");
     //локатор кнопки зарегистрироваться
-    private final By registrationButton = By.xpath("//*[@id=\"root\"]/div/main/div/form/button");
+    private final By registrationButton = By.cssSelector("button.button_button_type_primary__1O7Bx");
     //локатор кнопки "войти"
     private final By logInRegistrationButton = By.xpath("//*[@id=\"root\"]/div/main/div/div/p/a");
+    //локатор надписи "некорректный пароль"
+    private final By incorrectPassword = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[3]/div/p");
 
     //регистрация нового пользователя
     public void registrationCorrectUser(String newName, String newPassword, String newEmail){
@@ -29,17 +32,10 @@ public class RegistrationPage {
         driver.findElement(newPasswordField).sendKeys(newPassword);
         driver.findElement(newEmailField).sendKeys(newEmail);
     }
-
-    //заполнить поле имя
-    public void enterInputNewName(String newName) {
+    //регистрация нового пользователя с некорректным паролем
+    public void registrationUserWithIncorrectPassword(String newName, String newPassword, String newEmail){
         driver.findElement(newNameField).sendKeys(newName);
-    }
-    //заполнить поле пароль
-    public void enterInputNewPassword(String newPassword) {
         driver.findElement(newPasswordField).sendKeys(newPassword);
-    }
-    //заполнить поле email
-    public void enterInputNewEmail(String newEmail) {
         driver.findElement(newEmailField).sendKeys(newEmail);
     }
     //клик по кнопке зарегистрироваться
@@ -57,5 +53,9 @@ public class RegistrationPage {
     }
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
+    }
+    //найти плашку "некорректный пароль"
+    public WebElement findIncorrectPassword() {
+        return driver.findElement(incorrectPassword);
     }
 }

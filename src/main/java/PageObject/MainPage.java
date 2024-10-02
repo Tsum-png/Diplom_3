@@ -28,7 +28,7 @@ public class MainPage {
     //локатор "говяжий метеорит (отбивная)"
     private final By meteoriteButton = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/ul[3]/a[2]");
     //локатор "соберите бургер"
-    private final By constructBurgerField = By.xpath("//*[@id=\"root\"]/div/main/section[1]/h1");
+    private final By constructBurgerField = By.xpath("//*[@id=\"root\"]/div/main/section[1]");
 
 
     //клик по "Личный кабинет"
@@ -68,6 +68,12 @@ public class MainPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(constructBurgerField));
     }
+    //найти элемент соберите бургер
+    public WebElement findConstructBurgerField() {
+        return driver.findElement(constructBurgerField);
+    }
+
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }

@@ -12,11 +12,11 @@ public class LogInPage {
 
     private WebDriver driver;
     //локатор поля email
-    private final By emailField = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[1]/div/div");
+    private final By emailField = By.xpath(".//input[@class = 'text input__textfield text_type_main-default' and@type = 'text']");
     //локатор поля пароль
-    private final By passwordField = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[2]/div/div");
+    private final By passwordField = By.xpath(".//input[@class = 'text input__textfield text_type_main-default' and@type = 'password']");
     //локатор кнопки "войти"
-    private final By logInButton = By.xpath("//*[@id=\"root\"]/div/main/div/form/button");
+    private final By logInButton = By.xpath(".//button[text()='Войти']");
     //локатор "Зарегистрироваться"
     private final By registrationButtonLoginPage = By.xpath("//*[@id=\"root\"]/div/main/div/div/p[1]/a");
     //локатор "Восстановить пароль"
@@ -24,12 +24,9 @@ public class LogInPage {
     //локатор заголовка "Вход"
     private final By enterField = By.xpath("//*[@id=\"root\"]/div/main/div/h2");
 
-    //заполнить поле email
-    public void enterInputEmail(String email) {
+    //заполнить поле email и пароль
+    public void enterInputEmailAndPassword(String email, String password) {
         driver.findElement(emailField).sendKeys(email);
-    }
-    //заполнить поле пароль
-    public void enterInputPassword(String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
     //клик на кнопку войти
