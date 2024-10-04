@@ -1,6 +1,5 @@
 import Api.ApiStep;
 import Api.CreateUser;
-import PageObject.ForgotPasswordPage;
 import PageObject.LogInPage;
 import PageObject.MainPage;
 import PageObject.ProfilePage;
