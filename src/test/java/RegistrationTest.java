@@ -59,7 +59,7 @@ public class RegistrationTest {
         logInPage.waitForLoadLogInField();
         logInPage.clickRegistrationButtonLoginPage();
         registrationPage.waitForLoadRegistrationField();
-        registrationPage.registrationCorrectUser(newEmail, newPassword, newName);
+        registrationPage.registrationCorrectUser(newName, newPassword, newEmail);
         registrationPage.clickRegistrationButton();
         LogIn login = new LogIn(newEmail, newPassword);
         ValidatableResponse response = apiStep.loginUser(login);
